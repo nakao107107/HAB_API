@@ -1,0 +1,30 @@
+version: "3"
+services:
+  hab_db:
+    container_name: hab_db
+    image: mysql:8.0
+    command: [--default-authentication-plugin=mysql_native_password]
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_ROOT_PASSWORD=hab
+    volumes:
+      - datavol:/var/lib/mysql
+    ports:
+      - "13306:3306"
+  hab_api:
+    container_name:  hab_api
+    build: .
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - hab_db
+    tty: true
+    stdin_open: true
+
+volumes:
+  datavol:
+    driver: local
+  redashvol:
+    driver: local
