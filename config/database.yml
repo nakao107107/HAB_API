@@ -29,6 +29,13 @@ test:
   <<: *default
   database: hab_test
 
+production:
+  <<: *default
+  host:     hab-db.c4o9kwpuyee9.ap-northeast-1.rds.amazonaws.com
+  port:     3306
+  database: hab_production
+  username: hab_user
+  password: habpassword
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -48,8 +55,3 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: hab_production
-  username: hab
-  password: <%= ENV['HAB_DATABASE_PASSWORD'] %>
