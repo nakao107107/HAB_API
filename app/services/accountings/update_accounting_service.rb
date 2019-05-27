@@ -7,11 +7,14 @@ class UpdateAccountingService < BaseService
         return if accounting.nil?
 
         accounting.update!(
+            payment_type: params["payment_type"],
             amount: params["amount"],
-            category_id: params["category_id"]
+            category_id: params["category_id"],
+            item: params["item"],
+            note: params["note"]
         )
 
-        return accounting
+        return accounting.basic_info
 
     end
 end

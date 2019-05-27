@@ -46,3 +46,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #jwt
 gem 'jwt'
+
+#cors対策
+gem 'rack-cors', :require => 'rack/cors'

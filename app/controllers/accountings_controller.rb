@@ -3,11 +3,29 @@ class AccountingsController < ApplicationController
     def index
 
         show_all_accountings_service = ShowAllAccountingsService.new(@user)
-        accountings = show_all_accountings_service.run()
-
+        accountings = show_all_accountings_service.run(params)
         render json: accountings, status: :ok
 
         
+    end
+
+    def show
+
+        show_accounting_service = ShowAccountingService.new(@user)
+        accounting = show_accounting_service.run(params)
+
+        if accounting.nil?
+
+            render json: {
+
+                message: "指定されたデータは存在しません"
+
+            },status: :not_found and return
+
+        end
+
+        render json: accounting, status: :ok
+
     end
 
     def create

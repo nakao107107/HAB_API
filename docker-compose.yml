@@ -11,17 +11,17 @@ services:
       - datavol:/var/lib/mysql
     ports:
       - "13306:3306"
-  hab_api:
-    container_name:  hab_api
-    build: .
-    volumes:
-      - .:/myapp
-    ports:
-      - "3000:3000"
-    depends_on:
-      - hab_db
-    tty: true
-    stdin_open: true
+  # hab_api:
+  #   container_name:  hab_api
+  #   build: .
+  #   volumes:
+  #     - .:/myapp
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - hab_db
+  #   tty: true
+  #   stdin_open: true
 
 volumes:
   datavol:

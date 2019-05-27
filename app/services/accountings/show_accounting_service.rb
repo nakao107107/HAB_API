@@ -1,13 +1,8 @@
-class DeleteAccountingService < BaseService
+class ShowAccountingService < BaseService
 
-    def run(params)
+    def run (params)
 
         accounting = Accounting.find_by(id: params["id"], user_id: @user.id)
-
-        return if accounting.nil?
-
-        accounting.delete
-
         return accounting.basic_info
 
     end
